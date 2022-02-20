@@ -20,7 +20,7 @@ var redStarted = false;//if true the red box is already in the canvas
 var greenStarted = false;//if true the green box is already in the canvas
 
 var clearCanvas = function () {
-    ctx.fillStyle = 'white';//clears the canvas
+    ctx.fillStyle = "black";//clears the canvas
 	ctx.fillRect(0,0,400,400);
 
 };
