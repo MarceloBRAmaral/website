@@ -1,0 +1,266 @@
+<html>
+   <head>
+	   	<!-- Google Tag Manager -->
+	   		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        	})(window,document,'script','dataLayer','GTM-M4BFTJZ');</script>
+    	<!-- End Google Tag Manager -->
+      <title>Box2dWeb Demo</title>
+	  <link rel="stylesheet" href="../css/style.css">
+	</head>
+   </head>
+   <body style="margin:0px;">
+	<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4BFTJZ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+      <canvas id="canvas" width="800px" height="600px" style="background-color:#333333;" ></canvas>
+	<!-- instructions section -->
+		<section class="message">
+    		<h2>Click over a box with your mouse and drag it.</h2>  
+    		<p><a href="../index.html">HOME</a></p>      
+		</section>
+   </body>
+   <script type="text/javascript" src="Box2dWeb-2.1.a.3.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+   <script type="text/javascript" src="jcanvas.js"></script>
+   <script type="text/javascript">
+
+    // source: http://www.html5canvastutorials.com/tutorials/html5-canvas-image-loader/
+   	function loadImages(sources, callback) {
+        var images = {};
+        var loadedImages = 0;
+        var numImages = 0;
+        // get num of sources
+        for(var src in sources) {
+          numImages++;
+        }
+        for(var src in sources) {
+          images[src] = new Image();
+          images[src].onload = function() {
+            if(++loadedImages >= numImages) {
+              callback(images);
+            }
+          };
+          images[src].src = sources[src];
+        }
+      }
+
+      window.onload = function(images) {
+        var sources = {box: "box.png"};
+        loadImages(sources, function(images) {
+			var    b2Vec2 = Box2D.Common.Math.b2Vec2
+				,      b2BodyDef = Box2D.Dynamics.b2BodyDef
+				,      b2Body = Box2D.Dynamics.b2Body
+				,      b2FixtureDef = Box2D.Dynamics.b2FixtureDef
+				,      b2World = Box2D.Dynamics.b2World
+				,      b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape
+				,      b2CircleShape = Box2D.Collision.Shapes.b2CircleShape
+				,      b2RevoluteJointDef = Box2D.Dynamics.Joints.b2RevoluteJointDef
+				,      b2MouseJointDef =  Box2D.Dynamics.Joints.b2MouseJointDef
+				,      b2DebugDraw = Box2D.Dynamics.b2DebugDraw
+				,      b2Fixture = Box2D.Dynamics.b2Fixture
+				,      b2AABB = Box2D.Collision.b2AABB;
+				
+				var world = new b2World(new b2Vec2(0,10), true);
+			
+				for(i=0;i<20;i++)	{					
+					
+					var src = images.box;
+					
+					var X = Math.round(Math.random()*20);
+					var Y = Math.round(Math.random()*9);
+					var bodyDef2 = new b2BodyDef;
+					bodyDef2.type = b2Body.b2_dynamicBody;
+					bodyDef2.position.Set(X,Y);
+					bodyDef2.userData = src;
+					
+					var fixDef2 = new b2FixtureDef;
+					fixDef2.density = 10.0;
+					fixDef2.friction = .9;
+					fixDef2.restitution = .2; 
+					fixDef2.shape = new b2PolygonShape;
+					//fixDef2.shape.SetAsBox((40/30),(40/30)); 
+					fixDef2.shape.SetAsBox((40/60),(40/60));
+					
+					world.CreateBody(bodyDef2).CreateFixture(fixDef2);
+				}
+				
+				
+				// wheel.SetLinearVelocity(new b2Vec2( 1, 0 ) );
+				// wheel.SetAngularVelocity(Math.PI*2);
+				// wheel.SetPositionAndAngle(new b2Vec2(2,3),-20*(Math.PI/180));
+				// alert(wheel.GetAngle()*(180/Math.PI));
+				// alert(wheel.GetLinearVelocity().x);
+				// alert(wheel.GetPosition().x);
+				// alert(wheel.GetPosition().y);
+				// Ground
+				var bodyDef = new b2BodyDef;
+				bodyDef.type = b2Body.b2_staticBody;
+				bodyDef.position.Set(10,13);
+				bodyDef.userData = 'ground';
+				
+				var fd = new b2FixtureDef;
+				fd.shape = new b2PolygonShape;
+				fd.shape.SetAsBox(10,0.5);
+				  
+				var holder = world.CreateBody(bodyDef);
+				holder.CreateFixture(fd);
+		
+		
+				
+				var debugDraw = new b2DebugDraw();
+				debugDraw.SetSprite ( document.getElementById ("canvas").getContext ("2d"));
+				debugDraw.SetDrawScale(30);     //define scale
+				debugDraw.SetFillAlpha(0.3);    //define transparency
+				debugDraw.SetLineThickness(1.0);
+				debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+				world.SetDebugDraw(debugDraw);
+				
+				//window.setInterval(update,1000/60);
+				
+				function update() {
+					world.Step(1 / 60, 10, 10);
+					if(isMouseDown && (!mouseJoint)) {
+						var body = getBodyAtMouse();
+						if(body) {
+							var md = new b2MouseJointDef();
+							md.bodyA = world.GetGroundBody();
+							md.bodyB = body;
+							md.target.Set(mouseX, mouseY);
+							md.collideConnected = true;
+							md.maxForce = 300.0 * body.GetMass();
+							mouseJoint = world.CreateJoint(md);
+							body.SetAwake(true);
+						}
+					}
+					if(mouseJoint) {
+						if(isMouseDown) {
+							mouseJoint.SetTarget(new b2Vec2(mouseX, mouseY));
+						} 
+						else {
+							world.DestroyJoint(mouseJoint);
+							mouseJoint = null;
+						}
+					}
+					
+					$("canvas").clearCanvas();
+					for (b = world.GetBodyList() ; b; b = b.GetNext())
+					{
+						var angle = b.GetAngle()*(180/Math.PI);
+						var pos = b.GetPosition();		
+						  if (b.GetUserData() != 'ground'){	
+							  $("canvas")
+							  .rotateCanvas({
+								  x: pos.x * 30, y: pos.y * 30,
+								  rotate: angle
+							  })
+							  .drawImage({
+								  source: b.GetUserData(),
+								  x: pos.x * 30, y: pos.y * 30,
+								  fromCenter: true
+							  })
+							  .restoreCanvas();
+						   }
+						   else if(b.GetUserData() == 'ground')	{
+							   $("canvas").drawRect({
+								  fillStyle: "#8cc924",
+								  x: pos.x * 30, y: pos.y * 30,
+								  width: 20 * 30,
+								  height: 1 * 30,
+								  cornerRadius: 0
+							  })
+						   }
+						
+					}
+					//world.DrawDebugData();
+					world.ClearForces();			
+				};
+				
+				var canvasPosition = {};
+				canvasPosition.x = $('canvas').offset().left;
+				canvasPosition.y = $('canvas').offset().top;	
+				//mouse
+				 
+				var mouseX, mouseY, mousePVec, isMouseDown, selectedBody, mouseJoint;
+				 
+				document.addEventListener("mousedown", function(e) {
+				   isMouseDown = true;
+				   handleMouseMove(e);
+				   document.addEventListener("mousemove", handleMouseMove, true);
+				}, true);
+				 
+				document.addEventListener("mouseup", function() {
+				   document.removeEventListener("mousemove", handleMouseMove, true);
+				   isMouseDown = false;
+				   mouseX = undefined;
+				   mouseY = undefined;
+				}, true);
+				 
+				function handleMouseMove(e) {
+				   mouseX = (e.clientX - canvasPosition.x) / 30;
+				   mouseY = (e.clientY - canvasPosition.y) / 30;
+				};
+				 
+				function getBodyAtMouse() {
+				   mousePVec = new b2Vec2(mouseX, mouseY);
+				   var aabb = new b2AABB();
+				   aabb.lowerBound.Set(mouseX - 0.001, mouseY - 0.001);
+				   aabb.upperBound.Set(mouseX + 0.001, mouseY + 0.001);
+				 
+				   // Query the world for overlapping shapes.
+				 
+				   selectedBody = null;
+				   world.QueryAABB(getBodyCB, aabb);
+				   return selectedBody;
+				}
+				 
+				function getBodyCB(fixture) {
+					console.log(fixture);
+				   if(fixture.GetBody().GetType() != 0) { //Static Bodies have type 0
+					  if(fixture.GetShape().TestPoint(fixture.GetBody().GetTransform(), mousePVec)) {
+						 selectedBody = fixture.GetBody();
+						 return false;
+					  }
+				   }
+				   return true;
+				}
+				
+				
+				// requestAnim shim layer by Paul Irish
+				window.requestAnimFrame =(function(){
+				  return  window.requestAnimationFrame       || 
+						  window.webkitRequestAnimationFrame || 
+						  window.mozRequestAnimationFrame    || 
+						  window.oRequestAnimationFrame      || 
+						  window.msRequestAnimationFrame     || 
+						  function(/* function */ callback, /* DOMElement */ element){
+							window.setTimeout(callback, 1000 / 60);
+						  };
+				})();
+				
+				function animate() {
+					requestAnimFrame(animate);
+					update();	
+				}
+				
+				animate();
+				
+			});
+      };
+
+
+		function box2dweb(images)	{
+			
+			
+		}
+		
+		
+   </script>
+   
+   
+</html>
+
+ 
