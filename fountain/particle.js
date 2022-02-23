@@ -20,7 +20,7 @@
 //2. make the life in seconds
 //3. receive a friction number directly proportional and convert here
 //
-//By Marcelo Silva
+//By Marcello Silva
 var particle = {
     position:null,
     velocity:null,

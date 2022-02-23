@@ -21,7 +21,7 @@
 //1. (ADDED)add friction;(ADDED in the particle system)
 //2. add collision between balls
 //
-//By Marcelo Silva
+//By Marcello Silva
 
 //canvas definition
 var document;var window;var init;
