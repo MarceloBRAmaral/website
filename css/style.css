@@ -132,13 +132,29 @@ img {
     color: var(--primary);
 }
 
-.showcase a:hover {
-    /* color: var(--light); */
-    /* background: var(--hyperlink); */
-    /* color: var(--dark); */
-    /* font-weight: bold; */
-    /* font-size: 2rem; */
-    color: var(--hyperlink);
+.linkedin:hover .fa-brands{
+    transition: 1.5s;
+    transform: rotateY(360deg);
+}
+
+.github:hover .fa-brands{
+    transition: 1.5s;
+    transform: rotateY(360deg);
+}
+
+.youtube:hover .fa-brands{
+    transition: 1.5s;
+    transform: rotateY(360deg);
+}
+
+.stackoverflow:hover .fa-brands{
+    transition: 1.5s;
+    transform: rotateY(360deg);
+}
+
+.twitter:hover .fa-brands{
+    transition: 1.5s;
+    transform: rotateY(360deg);
 }
 
 /* top box */
