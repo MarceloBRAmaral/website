@@ -129,7 +129,8 @@ img {
 .showcase p {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--light);
+    /* color: var(--light); */
+    color: var(--isabelline);
 }
 
 .showcase a {
@@ -138,6 +139,11 @@ img {
     /* box-shadow: var(--shadow);  */
     /* color: var(--hyperlink); */
     color: var(--primary);
+}
+
+.showcase img {
+    max-width: 600px;
+    /* max-height: 60%; */
 }
 
 .infoarea{
@@ -153,7 +159,7 @@ img {
     color: var(--light);
 }
 .infoarea h1{
-    color: var(--isabelline);
+    color: var(--light);
 }
 .infoarea h2{
     color: var(--isabelline);
@@ -163,8 +169,8 @@ img {
     text-decoration: none;
 }
 .infoarea img{
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 60px;
+    max-height: 60px;
     box-shadow: var(--shadow);
 }
 .text{
