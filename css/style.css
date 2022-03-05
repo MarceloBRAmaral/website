@@ -91,7 +91,7 @@ img {
     background: var(--dark);
     box-shadow: var(--shadow);
     display: grid;
-    min-height: 82vh;
+    /* min-height: 60vh; */
     gap: 0px;
     grid-template-areas: 
     'showcase area area area';
@@ -149,7 +149,7 @@ img {
 .infoarea{
     grid-area: area;
     justify-content: center;
-    padding: 5rem;
+    padding: 3rem;
     /* width: 200%; */
     /* margin-right: 800px; */
     /* background: var(--heliotropegray); */
@@ -172,6 +172,19 @@ img {
     max-width: 60px;
     max-height: 60px;
     box-shadow: var(--shadow);
+}
+.about{
+    grid-area: area;
+    justify-content: center;
+    padding: 3rem;
+}
+.about h1{
+    color: var(--light);
+}
+.about p{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--silverpink);
 }
 .text{
     color: var(--silverpink);
