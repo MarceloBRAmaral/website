@@ -68,7 +68,6 @@ img {
     list-style: none;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
-
 .main-nav a {
     background: var(--primary);
     display: block;
@@ -80,10 +79,12 @@ img {
     font-size: 1.1rem;
     box-shadow: var(--shadow);    
 }
-
 .main-nav a:hover {
     background: var(--dark);
     color: var(--light);
+}
+.active a{
+    background: var(--light);
 }
 
 /* top container */
@@ -153,6 +154,8 @@ img {
     /* width: 200%; */
     /* margin-right: 800px; */
     /* background: var(--heliotropegray); */
+    max-height: 60vh;
+    overflow-y: scroll;
 }
 
 .infoarea p{
@@ -182,6 +185,26 @@ img {
     color: var(--light);
 }
 .about p{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--silverpink);
+}
+
+.workProjects{
+    grid-area: area;
+    justify-content: center;
+    padding: 3rem;
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+.workProjects h1{
+    color: var(--light);
+}
+.workProjects h2{
+    font-size: 2rem;
+    color: var(--isabelline);
+}
+.workProjects p{
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--silverpink);
