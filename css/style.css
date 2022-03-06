@@ -89,7 +89,9 @@ img {
 
 /* top container */
 .top-container {
-    background: var(--dark);
+    /* background: var(--dark); */
+    /* background: #ccc; */
+    background: #535353;
     box-shadow: var(--shadow);
     display: grid;
     /* min-height: 60vh; */
@@ -101,6 +103,7 @@ img {
 /* showcase */
 .showcase {
     grid-area: showcase;
+    background: #333;
     /* min-height: 660px; */
     /* width: 60%; */
     /* background: url(../img/laptop.jpg); */
@@ -195,7 +198,10 @@ img {
     justify-content: center;
     padding: 3rem;
     max-height: 60vh;
+    min-width: 80vh;
     overflow-y: scroll;
+    /* background: #ccc; */
+    /* background: #535353; */
 }
 .workProjects h1{
     color: var(--light);
@@ -208,6 +214,52 @@ img {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--silverpink);
+}
+.accordion{
+    /* max-width: 400px; */
+    background: #333;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.accord__label{
+    color: var(--light);
+    font-size: 2rem;
+    padding: 14px 20px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.4s;
+}
+.accord__label:hover{
+background: #4A4E69;
+}
+.accord__label::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 12px;
+    height: 6px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+    background-size: contain;
+    transition: transform 0.4s;
+  }
+.accord__content{
+    padding: 14px 20px;
+    background: #535353;
+    display: none;
+}
+.accord__input{
+    display: none;
+}
+.accord__input:checked ~ .accord__content{
+    display: block;
+    
+}
+.accord__input:checked ~ .accord__label::after{
+    transform: translateY(-50%) rotate(0.5turn);
 }
 .text{
     color: var(--silverpink);
