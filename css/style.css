@@ -249,14 +249,15 @@ background: #4A4E69;
 .accord__content{
     padding: 14px 20px;
     background: #535353;
-    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1s;
 }
 .accord__input{
     display: none;
 }
 .accord__input:checked ~ .accord__content{
-    display: block;
-    
+    max-height: 400px;
 }
 .accord__input:checked ~ .accord__label::after{
     transform: translateY(-50%) rotate(0.5turn);
