@@ -203,7 +203,8 @@ img {
     justify-content: center;
     padding: 3rem;
     max-height: 60vh;
-    min-width: 80vh;
+    /* min-width: 80vh; */
+    max-width: 700px;
     overflow-y: scroll;
     /* background: #ccc; */
     /* background: #535353; */
@@ -303,7 +304,7 @@ background: #4A4E69;
 }
 
 /* top box */
-.top-box {
+/* .top-box {
     background: var(--primary);
     display: grid;
     align-items: center;
@@ -320,20 +321,20 @@ background: #4A4E69;
 
 .top-box-b {
     grid-area: top-box-b;
-}
-.boxes {
+} */
+/* .boxes {
     margin-bottom: 30rem;
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.box {
+} */
+/* .box {
     background: var(--primary);
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
     display: grid;
-}
+} */
 
 /* info */
 .info {
@@ -522,18 +523,21 @@ footer a{
         /* min-width: 350px; */
         margin: 30px 50px; /* top right bottom left*/
     }
-    .top-box {
+    /* .top-box {
         max-width: 250px;
-    }
-    .boxes {
+    } */
+    /* .boxes {
         max-width: 300px;
-    }
+    } */
     /* .top-container {
         grid-template-areas: 
         'showcase'
         'top-box-a' 
         'top-box-b';
     } */
+    .workProjects{
+        padding: 1rem;
+    }
     .main-nav ul {
         grid-template-columns: 1fr;
         max-width: 300px;
@@ -542,7 +546,7 @@ footer a{
         max-width: 300px;
     }
     .accordion{
-        max-width: 200px;
+        max-width: 300px;
     }
     .accord__label{
         font-size: 1rem;
@@ -565,9 +569,9 @@ footer a{
     .credits {
         max-width: 300px;
     }
-    .footer {
+    /* .footer {
         max-width: 300px;
-    }
+    } */
     .portfolio {
         max-width: 300px;
     }
