@@ -412,6 +412,9 @@ footer a{
     .infoarea{
         padding: 1rem;
     }
+    .infoarea h2{
+        font-size: 1.2rem;
+    }
     .workProjects{
         padding: 1rem;
     }
@@ -431,9 +434,7 @@ footer a{
     .accord__label{
         font-size: 1.5rem;
     }    
-    .infoarea h2{
-        font-size: 1.5rem;
-    }
+    
     .info {
         max-width: 300px;
     }
@@ -454,7 +455,7 @@ footer a{
         font-size: 1.4rem;
     }    
     .infoarea h2{
-        font-size: 1.4rem;
+        font-size: 0.9rem;
     }
     .accord__content p{
         font-size: 0.8rem;
