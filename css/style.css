@@ -4,26 +4,19 @@
     --dark: #333;
     --light: #E9CE2C;
     --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
-    --hyperlink: #A9FFCB;
     --isabelline: #F2E9E4;
     --silverpink: #C9ADA7;
-    --heliotropegray: #9A8C98;
-    --independence: #4A4E69;
-    --spacecadet: #22223B;
 }
-
 html {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 body {
     background: #ccc;
     height: 100vh;
     margin: 0px 50px; /* top right bottom left*/
     padding: 0px;
 }
-
 .btn {
     background: var(--dark);
     color: var(--light);
@@ -31,16 +24,13 @@ body {
     text-decoration: none;
     border: 0;
 }
-
 img {
     max-width: 100%;
 }
-
 .wrapper {
     display: grid;
     gap: 0px;
 }
-
 /* navigation */
 .main-nav ul {
     display: grid;
@@ -67,7 +57,6 @@ img {
 .active a{
     background: var(--light);
 }
-
 /* top container */
 .top-container {
     background: #535353;
@@ -77,7 +66,6 @@ img {
     grid-template-areas: 
     'showcase infoarea';
 }
-
 /* showcase */
 .showcase {
     grid-area: showcase;
@@ -89,19 +77,16 @@ img {
     justify-content: center;
     box-shadow: var(--shadow);
 }
-
 .showcase h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--light);
 }
-
 .showcase p {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--isabelline);
 }
-
 .showcase a {
     background: var(--dark);
     color: var(--primary);
@@ -110,7 +95,6 @@ img {
 .showcase img {
     max-width: 600px;
 }
-
 .infoarea{
     grid-area: infoarea;
     justify-content: center;
@@ -118,7 +102,6 @@ img {
     overflow-y: scroll;
     flex-direction: column; 
 }
-
 .infoarea p{
     color: var(--isabelline);
 }
@@ -243,40 +226,6 @@ background: #4A4E69;
     transform: rotateY(360deg);
 }
 
-/* disclaimer */
-.disclaimer {
-    margin-bottom: 20rem;
-    background: var(--dark);
-    color: var(--light);
-    text-align: center;
-    padding: 1rem;
-}
-.disclaimer a {
-    color: rgb(49, 140, 245);
-}
-/* message */
-.message {
-    margin-top: 2rem;
-    margin-bottom: 20rem;
-    background: var(--dark);
-    color: var(--light);
-    text-align: center;
-    padding: 1rem;
-}
-.message a{
-    color: var(--hyperlink);
-}
-.credits {
-    margin-top: 2rem;
-    background: var(--dark);
-    color: var(--light);
-    text-align: center;
-    padding: 1rem;
-}
-.credits a{
-    color: rgb(49, 140, 245);
-}
-
 /* footer */
 footer {
     margin-top: 1rem;
@@ -296,8 +245,7 @@ footer a{
     }
     .workProjects{
         padding: 0;
-    }
-    
+    }    
 }
 @media(max-width: 1500px){
     .accordion{
@@ -323,8 +271,7 @@ footer a{
         font-size: 1.2rem;
     }
 }
-@media(max-width: 1200px){
-    
+@media(max-width: 1200px){    
     .infoarea img{
         width: 100%;
     }
@@ -361,15 +308,7 @@ footer a{
         grid-template-columns: 1fr;
         max-width: 400px;
     }
-    .info {
-        grid-template-columns: 1fr;
-    }
-    .info .btn {
-        display: block;
-        text-align: center;
-        margin: auto;
-    }
-    
+        
     body {
         background-attachment: fixed;
         max-width: 100%;
@@ -407,23 +346,8 @@ footer a{
     }
     .accord__label{
         font-size: 1.5rem;
-    }    
-    
-    .info {
-        max-width: 300px;
-    }
-    .disclaimer {
-        max-width: 300px;
-    }
-    .message {
-        max-width: 300px;
-    }
-    .credits {
-        max-width: 300px;
-    }
-    .portfolio {
-        max-width: 300px;
-    }
+    } 
+}
 @media(max-width: 400px){
     .accord__label{
         font-size: 1.4rem;
@@ -434,5 +358,4 @@ footer a{
     .accord__content p{
         font-size: 0.8rem;
     }
-}
 }
